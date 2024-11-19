@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="{{ url_for('index') }}" class="logo">Flask App</a>
+      </div>
+      <div class="nav-right">
+        {% if 'username' in session %}
+        <div class="profile-dropdown">
+          <a href="#" class="profile-link">
+            <img
+              src="{{ url_for('static', filename='images/profilepic.jpeg') }}"
+              alt="Profile Picture"
+            />
+          </a>
+          <div class="dropdown-content">
+            <span class="username">{{ session['username'] }}</span>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="dashboard-header">
+        <h1>Welcome to Your Dashboard, {{ session['username'] }}!</h1>
+        <p>Here you can find an overview of your stats and activities.</p>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h2>42</h2>
+          <p>Total Logins</p>
+        </div>
+        <div class="stat-card">
+          <h2>128</h2>
+          <p>Songs Played</p>
+        </div>
+        <div class="stat-card">
+          <h2>16</h2>
+          <p>Playlists Created</p>
+        </div>
+        <div class="stat-card">
+          <h2>8</h2>
+          <p>Friends Connected</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="action-button">Create New Playlist</button>
+        <button class="action-button">View Listening History</button>
+        <button class="action-button">Manage Connections</button>
+      </div>
+    </div>
+  </body>
+</html>

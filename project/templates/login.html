@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login to My Flask App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Login to My Flask App</h1>
+
+      <!-- Login Form -->
+      <form method="post" action="{{ url_for('login') }}">
+        <label for="login_id">Username or Email:</label>
+        <input type="text" id="login_id" name="login_id" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <input type="submit" value="Login" />
+      </form>
+
+      <!-- Social Login Buttons -->
+      <a href="#" class="button spotify-button">Continue with Apple</a>
+      <!-- <a href="#" class="button spotify-button">Continue with Spotify</a> -->
+
+      <a href="#" class="button google-button">Continue with Google</a>
+    </div>
+  </body>
+</html>

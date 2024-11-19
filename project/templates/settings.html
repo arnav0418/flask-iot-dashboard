@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="{{ url_for('index') }}" class="logo">Flask App</a>
+        </div>
+        <div class="nav-right">
+            {% if 'username' in session %}
+            <div class="profile-dropdown">
+                <a href="#" class="profile-link">
+                    <img src="{{ url_for('static', filename='images/profilepic.jpeg') }}" alt="Profile Picture">
+                </a>
+                <div class="dropdown-content">
+                    <span class="username">{{ session['username'] }}</span>
+                    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('settings') }}">Settings</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="settings-header">
+            <h1>Settings</h1>
+            <p>Manage your account settings and preferences here.</p>
+        </header>
+
+        <div class="settings-form">
+            <form action="{{ url_for('settings') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="{{ session['username'] }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <small>Leave blank to keep the current password</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="theme">Theme:</label>
+                    <select id="theme" name="theme">
+                        <option value="light" {% if user.theme=='light' %}selected{% endif %}>Light</option>
+                        <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>Dark</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="cta-button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check for saved theme in local storage and apply it
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+</body>
+
+</html>

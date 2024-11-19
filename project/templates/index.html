@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Flask App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="{{ url_for('index') }}" class="logo">Smart Home</a>
+      </div>
+      <div class="nav-right">
+        {% if 'username' in session %}
+        <div class="profile-dropdown">
+          <a href="#" class="profile-link">
+            <img
+              src="{{ url_for('static', filename='images/profilepic.jpeg') }}"
+              alt="Profile Picture"
+            />
+          </a>
+          <div class="dropdown-content">
+            <span class="username">{{ session['username'] }}</span>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="main-header">
+        <!-- <h1>Welcome <span class="username">{{ session['username'] }}</span></h1> -->
+        {% if 'username' not in session %}
+        <div class="cta-buttons">
+          <a href="{{ url_for('login') }}" class="cta-button">Login</a>
+          <a href="{{ url_for('signup') }}" class="cta-button">Sign Up</a>
+        </div>
+        {% endif %}
+      </header>
+    </div>
+
+    <p id="head1" class="header">
+      Welcome <span class="username">{{ session['username'] }}</span>
+    </p>
+    <p id="head2" class="header">Your gateway to an amazing experience</p>
+    <p id="head3" class="header">Just For You</p>
+    <p id="head4" class="header">Simple and Awesome All the Time</p>
+
+    <div class="light x1"></div>
+    <div class="light x2"></div>
+    <div class="light x3"></div>
+    <div class="light x4"></div>
+    <div class="light x5"></div>
+    <div class="light x6"></div>
+    <div class="light x7"></div>
+    <div class="light x8"></div>
+    <div class="light x9"></div>
+
+    <footer>
+      <div class="footer-container">
+        <a href="{{ url_for('contact') }}" class="footer-link">Contact Us</a>
+        <a href="{{ url_for('about') }}" class="footer-link">About Us</a>
+        <a href="{{ url_for('support') }}" class="footer-link">Support</a>
+      </div>
+    </footer>
+  </body>
+</html>

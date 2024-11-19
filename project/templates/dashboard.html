@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-left">
+        <a href="{{ url_for('index') }}" class="logo">Flask App</a>
+      </div>
+
+      <div class="nav-right">
+        {% if 'username' in session %}
+        <div class="profile-dropdown">
+          <a href="#" class="profile-link">
+            <img
+              src="{{ url_for('static', filename='images/profilepic.jpeg') }}"
+              alt="Profile Picture"
+            />
+          </a>
+          <div class="dropdown-content">
+            <span class="username">{{session['username']}}</span>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <h1>Welcome to Your Dashboard, {{ session['username'] }}!</h1>
+        <p>Monitor and control your devices efficiently.</p>
+      </div>
+
+      <!-- Main Navigation Buttons -->
+      <div class="button-container">
+        <button id="analytics-button" class="toggle-button">Analytics</button>
+        <button id="devices-button" class="toggle-button">Devices</button>
+      </div>
+
+      <!-- Analytics Section -->
+      <div id="analytics-section" class="hidden-section">
+        <div class="stats-grid">
+          <div class="stat-card" id="light-stat">
+            <h2>Light Levels</h2>
+            <p class="value">--</p>
+          </div>
+          <div class="stat-card" id="humidity-stat">
+            <h2>Humidity</h2>
+            <p class="value">--</p>
+          </div>
+          <div class="stat-card" id="temperature-stat">
+            <h2>Temperature</h2>
+            <p class="value">--</p>
+          </div>
+          <div class="stat-card" id="smoke-stat">
+            <h2>Smoke Levels</h2>
+            <p class="value">--</p>
+          </div>
+        </div>
+        <button id="buzzerButton" class="buzzer-button">Buzzer ON</button>
+        <button id="buzzerDeactivateButton" class="buzzer-button">
+          Buzzer OFF
+        </button>
+      </div>
+
+      <!-- Devices Section -->
+      <div id="devices-section" class="hidden-section">
+        <!-- Device Management Buttons -->
+        <div class="button-container">
+          <button id="add-device-button" class="toggle-button">
+            Add Device
+          </button>
+          <button id="modify-device-button" class="toggle-button">
+            Modify Device
+          </button>
+          <button id="remove-device-button" class="toggle-button">
+            Remove Device
+          </button>
+        </div>
+
+        <!-- Add Device Form -->
+        <div id="add-device-section" class="hidden-section">
+          <h2>Add Device</h2>
+          <form id="add-device-form">
+            <div class="form-group">
+              <label for="device_name">Device Name:</label>
+              <input type="text" id="device_name" name="device_name" required />
+            </div>
+            <div class="form-group">
+              <label for="device_type">Device Type:</label>
+              <select id="device_type" name="device_type" required>
+                <option value="sensor">Sensor</option>
+                <option value="controller">Controller</option>
+              </select>
+            </div>
+            <button type="submit">Add Device</button>
+          </form>
+        </div>
+
+        <!-- Modify Device Form -->
+        <div id="modify-device-section" class="hidden-section">
+          <h2>Modify Device</h2>
+          <form id="modify-device-form">
+            <div class="form-group">
+              <label for="modify_device_id">Device:</label>
+              <select id="modify_device_id" name="device_id" required>
+                <!-- Options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="light_limit">Light Level Limit (%):</label>
+              <input
+                type="number"
+                id="light_limit"
+                name="light_limit"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="humidity_limit">Humidity Level Limit (%):</label>
+              <input
+                type="number"
+                id="humidity_limit"
+                name="humidity_limit"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="temperature_limit">Temperature Limit (°C):</label>
+              <input
+                type="number"
+                id="temperature_limit"
+                name="temperature_limit"
+              />
+            </div>
+            <div class="form-group">
+              <label for="smoke_limit">Smoke Level Limit (ppm):</label>
+              <input
+                type="number"
+                id="smoke_limit"
+                name="smoke_limit"
+                min="0"
+              />
+            </div>
+            <button type="submit">Save Changes</button>
+          </form>
+        </div>
+
+        <!-- Remove Device Form -->
+        <div id="remove-device-section" class="hidden-section">
+          <h2>Remove Device</h2>
+          <form id="remove-device-form">
+            <div class="form-group">
+              <label for="remove_device_id">Device:</label>
+              <select id="remove_device_id" name="device_id" required>
+                <!-- Options will be populated by JavaScript -->
+              </select>
+            </div>
+            <button type="submit">Remove Device</button>
+          </form>
+        </div>
+
+        <!-- Device List -->
+        <div id="device-list" class="device-grid">
+          <!-- Devices will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard2.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/devices.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+  </body>
+</html>

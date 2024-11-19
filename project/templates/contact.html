@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="{{ url_for('index') }}" class="logo">Flask App</a>
+        </div>
+        <div class="nav-right">
+            {% if 'username' in session %}
+            <div class="profile-dropdown">
+                <a href="#" class="profile-link">
+                    <img src="{{ url_for('static', filename='images/profilepic.jpeg') }}" alt="Profile Picture">
+                </a>
+                <div class="dropdown-content">
+                    <span class="username">{{ session['username'] }}</span>
+                    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('settings') }}">Settings</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="main-header">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or comments, feel free to reach out through the following channels:</p>
+            <ul class="contact-info">
+                <li>Email: contact@example.com</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Address: 123 Main Street, Anytown, USA</li>
+            </ul>
+        </header>
+
+        <section class="contact-form">
+            <form method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea><br>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+    </div>
+</body>
+
+</html>

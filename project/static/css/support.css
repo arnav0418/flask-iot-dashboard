@@ -1,0 +1,83 @@
+/* General Styling for About Us Page */
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: #1db954; /* Accent color */
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+p, ul {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0.8rem;
+    background: var(--secondary-background-color); /* Secondary background color */
+    color: var(--text-color); /* Default text color */
+    border: 1px solid var(--border-color); /* Border color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 var(--box-shadow-color); /* Box shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+p:hover {
+    transform: scale(1.02); /* Slight scale effect on hover */
+    box-shadow: 0 8px 16px 0 var(--box-shadow-color); /* Stronger shadow on hover */
+}
+
+ul {
+    list-style-type: none; /* Removes default bullet points */
+    padding-left: 0; /* Remove padding for list */
+}
+
+ul li {
+    margin: 0.5rem 0;
+}
+
+a.cta-button {
+    display: inline-block;
+    margin: 1.5rem auto;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color); /* Text color for the button */
+    background: #1db954; /* Button background */
+    border: 2px solid var(--accent-color); /* Border to match accent color */
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    transition: 0.3s ease-in-out; /* Smooth transition effect */
+}
+
+a.cta-button:hover {
+    background: var(--button-hover-background-color); /* Hover background color */
+    color: var(--background-color); /* Text color on hover */
+    box-shadow: 0 4px 10px var(--box-shadow-color); /* Box shadow on hover */
+}
+
+/* About container styling */
+.about-container {
+    padding: 3rem 1rem;
+    background: var(--primary-background-color); /* Primary background color */
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem; /* Smaller font size for headings on smaller screens */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust font size for paragraphs */
+        padding: 1rem; /* Less padding */
+    }
+
+    a.cta-button {
+        font-size: 1rem; /* Adjust button font size */
+        padding: 0.5rem 1.5rem; /* Adjust button padding */
+    }
+}

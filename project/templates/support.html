@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>About Us</h2>
-<p>meow.</p>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/support.css') }}">
+
+<div class="about-container">
+    <p>
+        Welcome to our platform! We are committed to providing innovative solutions tailored to your needs.
+    </p>
+    <p>
+        <strong>Our Mission:</strong> To deliver high-quality services that empower individuals and businesses alike.
+    </p>
+    <p>
+        <strong>What We Offer:</strong>
+    </p>
+    <ul>
+        <li>Cutting-edge technology solutions</li>
+        <li>User-focused design and development</li>
+        <li>24/7 support and seamless integration</li>
+    </ul>
+    <p>
+        At our core, we value innovation, collaboration, and integrity. Our team is dedicated to ensuring that your experience is nothing
+        short of exceptional. Thank you for choosing us as your trusted partner.
+    </p>
+    <a href="{{ url_for('contact') }}" class="cta-button">Contact Us</a>
+</div>
 {% endblock %}

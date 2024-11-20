@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+
 /* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* Define CSS Variables */
@@ -310,6 +313,12 @@ button:focus {
   font-size: 2em;
 }
 
+.header .username {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  color: white;
+}
+
 #head1,
 #head2,
 #head3,
@@ -585,11 +594,11 @@ nav:hover {
 
 /* Navigation Links */
 .nav-left .logo {
-  font-size: 1.5rem;
-  color: var(--accent-color);
+  font-size: 1.8rem;
+  color: #1db954;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  font-weight: 400;
+  /*transition: color 0.3s ease;*/
 }
 
 .nav-left .logo:hover {
@@ -762,7 +771,12 @@ footer {
   color: var(--accent-color);
   text-decoration: none;
   font-size: 1rem;
+  font-weight: 400;
   transition: color 0.3s ease;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .footer-link:hover {

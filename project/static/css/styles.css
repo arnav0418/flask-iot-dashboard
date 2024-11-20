@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+
 /* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Body and Container */
@@ -23,10 +26,10 @@ nav {
 }
 
 .nav-left .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #1db954;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .nav-right {

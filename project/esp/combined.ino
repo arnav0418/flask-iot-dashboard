@@ -5,9 +5,9 @@
 #include <HTTPClient.h>
 
 // Wi-Fi Credentials
-const char* ssid = "Hirdy";
-const char* password = "pygx3165";
-const char* FLASK_SERVER = "http://127.0.0.1:5000/dashboard";
+const char* ssid = "Network Name";
+const char* password = "Password";
+const char* FLASK_SERVER = "IP of Flask Server";
 
 // Sensor Pin Configuration
 #define DHT_PIN 4       // GPIO pin for DHT sensor

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
 </head>
 
-<body>
+<body data-theme="{{user.theme}}">
     <nav>
         <div class="nav-left">
             <a href="{{ url_for('index') }}" class="logo">Smart Home</a>
@@ -59,8 +59,8 @@
                 <div class="form-group">
                     <label for="theme">Theme:</label>
                     <select id="theme" name="theme">
-                        <option value="light" {% if user.theme=='light' %}selected{% endif %}>Light</option>
-                        <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>Dark</option>
+                        <option value="light" {% if user.theme=='light' %}selected{% endif %}>light</option>
+                        <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>dark</option>
                     </select>
                 </div>
 
@@ -69,13 +69,13 @@
         </div>
     </div>
 
-    <script>
+    <!--<script>
         // Check for saved theme in local storage and apply it
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         });
-    </script>
+    </script>-->
 </body>
 
 </html>

@@ -19,14 +19,14 @@
     --button-hover-background-color: #1AA34A;
 }
 
-/*[data-theme='light'] {
+[data-theme='light'] {
     --background-color: #ffffff;
     --text-color: #000000;
     --secondary-background-color: #f0f0f0;
     --border-color: #ccc;
     --button-background-color: #1DB954;
     --button-hover-background-color: #1AA34A;
-}*/
+}
 
 /* Body and Container */
 body {

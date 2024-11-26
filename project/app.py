@@ -9,6 +9,7 @@ import threading
 import requests
 from datetime import datetime
 # from flask_cors import CORS
+from flask_migrate import Migrate
 
 # -------------------- Initializing --------------------
 
@@ -20,6 +21,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'secret!'  # For SocketIO
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 
 # Set up logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
@@ -36,6 +39,7 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
+    theme = db.Column(db.String(20), default='dark')
 
 with app.app_context():
     db.create_all()
@@ -44,7 +48,9 @@ with app.app_context():
         admin_user = User(
             username='admin',
             email='admin@example.com',
-            password=generate_password_hash('12345')
+            password=generate_password_hash('12345'),
+            theme = 'dark'
+
         )
         db.session.add(admin_user)
         db.session.commit()
@@ -385,6 +391,8 @@ def settings():
         user.email = new_email
         if new_password:
             user.password = generate_password_hash(new_password)
+            
+        user.theme = user_theme
         db.session.commit()
 
         flash('Settings updated successfully.')

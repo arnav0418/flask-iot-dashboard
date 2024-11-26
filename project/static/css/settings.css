@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+
 /* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Define CSS Variables */
@@ -16,14 +19,14 @@
     --button-hover-background-color: #1AA34A;
 }
 
-[data-theme='light'] {
+/*[data-theme='light'] {
     --background-color: #ffffff;
     --text-color: #000000;
     --secondary-background-color: #f0f0f0;
     --border-color: #ccc;
     --button-background-color: #1DB954;
     --button-hover-background-color: #1AA34A;
-}
+}*/
 
 /* Body and Container */
 body {
@@ -43,10 +46,10 @@ nav {
 }
 
 .nav-left .logo {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--button-background-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .nav-right {

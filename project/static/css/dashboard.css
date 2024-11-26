@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
 /* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* Define CSS Variables */
@@ -34,6 +36,7 @@ body {
   margin: auto;
   padding: 50px 0;
   text-align: center;
+  line-height: 4;
 }
 
 /* Navigation Bar */
@@ -41,16 +44,18 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
+  padding: 20px 50px;
   background-color: var(--secondary-background-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+
 }
 
 .nav-left .logo {
   font-size: 1.8rem;
-  color: var(--accent-color);
+  color: #1db954;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .nav-right {
@@ -161,6 +166,7 @@ nav {
 
 .toggle-button {
   padding: 15px 30px;
+  margin: 10px;
   background: var(--button-gradient);
   color: white;
   border: none;

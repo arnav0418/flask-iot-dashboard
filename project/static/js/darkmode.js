@@ -1,5 +1,5 @@
 // DarkMode
-
+/*
 document.addEventListener("DOMContentLoaded", () => {
   const themeSelect = document.getElementById("theme");
 
@@ -20,4 +20,4 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify({ theme: selectedTheme }),
     });
   });
-});
+});*/

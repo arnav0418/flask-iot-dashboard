@@ -254,12 +254,15 @@ form {
 
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+
 /* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* Navigation Bar */
@@ -269,14 +272,14 @@ nav {
   align-items: center;
   background-color: #1f1f1f;
   color: #e0e0e0;
-  padding: 10px 20px;
+  padding: 20px 50px;
 }
 
 .nav-left .logo {
-  font-size: 1.5em;
+  font-size: 1.8em;
   color: #1db954;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .nav-right {
